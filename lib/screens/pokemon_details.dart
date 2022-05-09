@@ -26,7 +26,6 @@ class PokemonDetailsScreen extends StatelessWidget {
                 left: 20,
                 child: Column(
                   children: [
-                    
                     Text(pokemonData.name!,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30),),
                     ClipRRect(
                         borderRadius: BorderRadius.circular(5),
@@ -50,8 +49,8 @@ class PokemonDetailsScreen extends StatelessWidget {
               Positioned(
                 right: -10,
                 top: 60,
-                height: 100,
-                width: 100,
+                height: 200,
+                width: 200,
                 child: Image.asset(
                   'images/pokeball.png'
                   )
@@ -75,7 +74,7 @@ class PokemonDetailsScreen extends StatelessWidget {
                           NameValueWidget(name: 'height', value: pokemonData.height!),
                           NameValueWidget(name: 'weight', value: pokemonData.weight!),
                           NameValueWidget(name: 'Spawn time', value: pokemonData.spawnTime!),
-                          NameValueWidget(name: 'weakness', value: pokemonData.weaknesses.toString()!),
+                          NameValueWidget(name: 'weakness', value: pokemonData.weaknesses.toString()),
                           // NameValueWidget(name: 'pre evolution', value: pokemonData.!),
                           // NameValueWidget(name: 'next evolution', value: pokemonData.nextEvolution!),
                         ],
