@@ -19,6 +19,7 @@ class _PokedeskAppState extends State<PokedeskApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: LoginPage(),
     );
   }

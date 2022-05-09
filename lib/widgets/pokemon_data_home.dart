@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedesc/helper/helper.dart';
+import 'package:pokedesc/widgets/pokemon_name_type_column.dart';
 
 import '../models/pokedex_model.dart';
 
@@ -39,27 +40,11 @@ class CustomPokemonWidget extends StatelessWidget {
                     height: 100,
                     width: 100,
                   imageUrl: pokemon.img!,
-                   placeholder: (context, url) =>
-                    Image.asset('images/pokeball.png'),
                 )),
                 Positioned(
                   top: 50,
                   left: 10,
-                  child: Column(
-                    children: [
-                      Text(pokemon.name!,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                      ClipRRect(
-                              borderRadius: BorderRadius.circular(5),
-                              child: Container(
-                                color: Colors.grey,
-                                child: Padding(
-                                  padding: EdgeInsets.all(3),
-                                  child: Text(pokemon.type![0])
-                                  )
-                                ),
-                      )
-                    ],
-                ))   
+                  child: PokemonNameTypeColumn(pokemon: pokemon))   
               ],
             ),
           )
@@ -70,3 +55,4 @@ class CustomPokemonWidget extends StatelessWidget {
 
   
 }
+
