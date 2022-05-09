@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedesc/helper/helper.dart';
 
 import '../models/pokedex_model.dart';
 
@@ -14,48 +15,58 @@ class CustomPokemonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-
       borderRadius: BorderRadius.circular(10),
       child: pokemon.img != null
           ? Container(
-            color: getColor(pokemon.type![0]),
-            child: CachedNetworkImage(
-                imageUrl: pokemon.img!,
-                placeholder: (context, url) =>
+            color: Helper.getColor(pokemon.type![0]),
+            child: Stack(
+              children: [
+                 Positioned(
+                  right: -5,
+                  bottom: -5,
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    child: Image.asset(
+                      'images/pokeball.png'
+                      ),
+                  ),
+                ),
+                Positioned(
+                  right: 10.0,
+                  bottom: 0.0,
+                  child: CachedNetworkImage(
+                    height: 100,
+                    width: 100,
+                  imageUrl: pokemon.img!,
+                   placeholder: (context, url) =>
                     Image.asset('images/pokeball.png'),
-              ),
+                )),
+                Positioned(
+                  top: 50,
+                  left: 10,
+                  child: Column(
+                    children: [
+                      Text(pokemon.name!,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                      ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: Container(
+                                color: Colors.grey,
+                                child: Padding(
+                                  padding: EdgeInsets.all(3),
+                                  child: Text(pokemon.type![0])
+                                  )
+                                ),
+                      )
+                    ],
+                ))   
+              ],
+            ),
           )
           : FlutterLogo(),
     );
   }
 
 
-  Color getColor(String? type){
-    if(type == "Grass") {
-      return Colors.green[400]!;
-    }else if(type == "Fire"){
-      return Colors.red[400]!;
-    }
-    else if(type == "Flying"){
-      return Colors.white;
-    }
-    else if(type == "Psychic"){
-      return Colors.purple[400]!;
-    }else if(type == "Poison"){
-      return Colors.purple[400]!;
-    }
-    else if(type == "Water"){
-      return Colors.grey[400]!;
-    }
-    else if(type == "Ground"){
-      return Colors.brown[400]!;
-    }
-    else if(type == "Rock"){
-      return Colors.brown[400]!;
-    }
-    else
-      return Colors.red[400]!;
-
-
-  }
+  
 }
