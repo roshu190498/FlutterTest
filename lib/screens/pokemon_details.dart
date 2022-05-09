@@ -83,6 +83,13 @@ class PokemonDetailsScreen extends StatelessWidget {
                     ),
                 ),
                 )),
+                Positioned(
+                  left: 110,
+                  top: 70,
+                  child: CachedNetworkImage(
+                    imageUrl: pokemonData.img!,
+                  )
+                )
             ],
           ),
         ),
